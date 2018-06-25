@@ -7,6 +7,7 @@ target 'mapsTestAPI' do
 	pod 'GoogleMaps'
 	pod 'GooglePlaces'
 	pod 'SwiftyJSON'
+	pod 'Alamofire'
 
   # Pods for mapsTestAPI
 

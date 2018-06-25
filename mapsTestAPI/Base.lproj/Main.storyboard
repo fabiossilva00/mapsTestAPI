@@ -11,44 +11,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="mapsTestAPI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="mapsTestAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-al-nPP">
-                                <rect key="frame" x="0.0" y="93" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="93" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fah-al-nPP" secondAttribute="height" multiplier="64:91" id="Svk-Fz-WbS"/>
+                                    <constraint firstAttribute="width" secondItem="fah-al-nPP" secondAttribute="height" multiplier="64:95" id="u3h-zW-U1i"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3d-Qf-sWk">
                                 <rect key="frame" x="0.0" y="36" width="320" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="S3d-Qf-sWk" secondAttribute="height" multiplier="64:9" id="XVJ-Ff-t9x"/>
+                                    <constraint firstAttribute="width" secondItem="S3d-Qf-sWk" secondAttribute="height" multiplier="64:9" id="Vbj-qb-frl"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fah-al-nPP" firstAttribute="top" secondItem="S3d-Qf-sWk" secondAttribute="bottom" constant="12" id="5i5-xD-c9n"/>
-                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EBC-rI-PpB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fah-al-nPP" secondAttribute="bottom" constant="20" id="UIP-IW-t2y"/>
-                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="WiI-lJ-Kbz"/>
-                            <constraint firstItem="fah-al-nPP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ct8-lw-O8a"/>
-                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s5c-Ls-dgl"/>
-                            <constraint firstItem="fah-al-nPP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vMo-P4-wmz"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Clj-5X-rz6"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QHo-4C-cb4"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Qcw-ti-gt8"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="etr-Ig-1QS"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ruh-vP-DHN"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="shs-C4-vOD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="map" destination="fah-al-nPP" id="nbf-58-BGr"/>
-                        <outlet property="viewSearch" destination="S3d-Qf-sWk" id="LgS-tf-b2S"/>
+                        <outlet property="map" destination="fah-al-nPP" id="BLl-uO-9C3"/>
+                        <outlet property="search" destination="S3d-Qf-sWk" id="XaJ-bc-s4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
