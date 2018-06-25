@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="mapsTestAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-al-nPP">
+                                <rect key="frame" x="0.0" y="93" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fah-al-nPP" secondAttribute="height" multiplier="64:91" id="Svk-Fz-WbS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3d-Qf-sWk">
+                                <rect key="frame" x="0.0" y="36" width="320" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S3d-Qf-sWk" secondAttribute="height" multiplier="64:9" id="XVJ-Ff-t9x"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="top" secondItem="S3d-Qf-sWk" secondAttribute="bottom" constant="12" id="5i5-xD-c9n"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EBC-rI-PpB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fah-al-nPP" secondAttribute="bottom" constant="20" id="UIP-IW-t2y"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="WiI-lJ-Kbz"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ct8-lw-O8a"/>
+                            <constraint firstItem="S3d-Qf-sWk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s5c-Ls-dgl"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vMo-P4-wmz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="map" destination="fah-al-nPP" id="nbf-58-BGr"/>
+                        <outlet property="viewSearch" destination="S3d-Qf-sWk" id="LgS-tf-b2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18.75" y="10.56338028169014"/>
+        </scene>
+    </scenes>
+</document>
