@@ -5,6 +5,8 @@
 //  Created by Fabio Sousa da Silva on 21/06/2018.
 //  Copyright © 2018 br.com.mapsTestAPI. All rights reserved.
 //
+//AIzaSyAutxt57Sz7VdxLHFQVc1qILGWjojIgzcE - API Google Maps
+//AIzaSyCeiRIJgaY5S1NhN6StoiaTw4uf47ICni8 - API Google Places
 
 import UIKit
 import GoogleMaps
@@ -19,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        GMSServices.provideAPIKey("")
-        GMSPlacesClient.provideAPIKey("")
+        GMSServices.provideAPIKey("AIzaSyAaV_8spEbATN3DooydKxJOSLgOHzmqNtE")
+        GMSPlacesClient.provideAPIKey("AIzaSyAaV_8spEbATN3DooydKxJOSLgOHzmqNtE")
         
         return true
     }

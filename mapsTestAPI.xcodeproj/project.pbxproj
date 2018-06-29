@@ -17,6 +17,8 @@
 		F2E10AE820DC2EC8007B70F1 /* LocalizacaoConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E10AE720DC2EC8007B70F1 /* LocalizacaoConvert.swift */; };
 		F2E10AEA20DD6D12007B70F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E10AE920DD6D12007B70F1 /* MapViewController.swift */; };
 		F2E226FB20E29061008B141E /* MapUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E226FA20E29061008B141E /* MapUViewController.swift */; };
+		F2E2270120E558D1008B141E /* linhaJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = F2E2270020E558CE008B141E /* linhaJSON.json */; };
+		F2E2270320E575A7008B141E /* deuMerda.json in Resources */ = {isa = PBXBuildFile; fileRef = F2E2270220E575A7008B141E /* deuMerda.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		F2E10AE720DC2EC8007B70F1 /* LocalizacaoConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizacaoConvert.swift; sourceTree = "<group>"; };
 		F2E10AE920DD6D12007B70F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F2E226FA20E29061008B141E /* MapUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUViewController.swift; sourceTree = "<group>"; };
+		F2E2270020E558CE008B141E /* linhaJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = linhaJSON.json; sourceTree = SOURCE_ROOT; };
+		F2E2270220E575A7008B141E /* deuMerda.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = deuMerda.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +93,11 @@
 				F2E10ACF20DBCFA1007B70F1 /* AppDelegate.swift */,
 				F2E10AD120DBCFA1007B70F1 /* ViewController.swift */,
 				F2E10AD320DBCFA1007B70F1 /* Main.storyboard */,
+				F2E2270220E575A7008B141E /* deuMerda.json */,
 				F2E10AE920DD6D12007B70F1 /* MapViewController.swift */,
 				F2E10AE220DBE415007B70F1 /* localJSON.json */,
 				F2E10AD620DBCFAD007B70F1 /* Assets.xcassets */,
+				F2E2270020E558CE008B141E /* linhaJSON.json */,
 				F2E10AD820DBCFAD007B70F1 /* LaunchScreen.storyboard */,
 				F2E10ADB20DBCFAD007B70F1 /* Info.plist */,
 				F2E10AE720DC2EC8007B70F1 /* LocalizacaoConvert.swift */,
@@ -166,9 +172,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E2270320E575A7008B141E /* deuMerda.json in Resources */,
 				F2E10ADA20DBCFAD007B70F1 /* LaunchScreen.storyboard in Resources */,
 				F2E10AD720DBCFAD007B70F1 /* Assets.xcassets in Resources */,
 				F2E10AD520DBCFA1007B70F1 /* Main.storyboard in Resources */,
+				F2E2270120E558D1008B141E /* linhaJSON.json in Resources */,
 				F2E10AE320DBE415007B70F1 /* localJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

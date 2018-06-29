@@ -15,6 +15,7 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     let markerT = GMSMarker()
     var markerSe = GMSMarker()
     var coordenateMuda = CLLocation()
+    var coordena = CLLocationCoordinate2D()
     
     @IBOutlet weak var googleMap: GMSMapView!
     
@@ -26,10 +27,14 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         print("idleAt")
-        let coordena = CLLocationCoordinate2DMake(position.target.latitude, position.target.longitude)
-        let algoTela = GMSGroundOverlay(position: coordena, icon: #imageLiteral(resourceName: "carVerde"), zoomLevel: 16.0)
-        algoTela.map = googleMap
-        algoTela.isTappable = true
+        coordena = CLLocationCoordinate2DMake(position.target.latitude, position.target.longitude)
+        
+        UIView.animate(withDuration: 2.5, animations: {
+            self.londonView?.tintColor = .blue
+        }) { (finished) in
+            self.lodon?.tracksViewChanges = false
+        }
+        
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
@@ -38,6 +43,7 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
 //                let algoTela = GMSGroundOverlay(position: coordena, icon: #imageLiteral(resourceName: "carVerde"), zoomLevel: 16.0)
 //                algoTela.map = googleMap
 //                algoTela.isTappable = true
+        
     }
     
     func mapView(_ mapView: GMSMapView, didBeginDragging marker: GMSMarker) {
@@ -55,7 +61,54 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
         markerSe.position = CLLocationCoordinate2DMake(-23.480049, -46.603209)
         markerSe.map = googleMap
         markerSe.isDraggable = true
+        markerSe.icon = UIImage(named: "mira")
+    }
+    
+    func makeOverlay(coordenadas: CLLocationCoordinate2D) {
         
+        markerT.map = nil
+    
+        let marker = GMSMarker(position: coordenadas)
+        marker.icon = UIImage(named: "ghostBlue")
+        marker.icon = GMSMarker.markerImage(with: .black)
+        marker.map = googleMap
+        
+    }
+    
+    var londonView: UIImageView?
+    var lodon: GMSMarker?
+    
+    func makeMarker(coordenadas: CLLocationCoordinate2D){
+        
+        let marker = GMSMarker(position: coordenadas)
+        
+        let house = UIImage(named: "ghostBlue")!.withRenderingMode(.alwaysTemplate)
+        let markerView = UIImageView(image: house)
+        markerView.tintColor = .white
+        londonView = markerView
+        
+        marker.title = "Bu!"
+        marker.snippet = "Fantasmaaa!"
+        
+//        marker.infoWindowAnchor = CGPoint(x: 2.5, y: 0.5)
+        
+        marker.accessibilityLabel = 
+        
+        marker.iconView = markerView
+        marker.tracksViewChanges = true
+        
+        marker.map = googleMap
+        lodon = marker
+        
+    }
+    
+    
+    @IBAction func redButton(_ sender: Any) {
+        makeMarker(coordenadas: coordena)
+    }
+    
+    @IBAction func blueButton(_ sender: Any) {
+        makeOverlay(coordenadas: coordena)
     }
     
     override func viewDidLoad() {

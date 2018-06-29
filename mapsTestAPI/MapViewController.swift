@@ -42,6 +42,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     let marker = GMSMarker()
     let markerPesquisa = GMSMarker()
     var inicialCoord = CLLocation()
+//    var latitudeArray: Array<Any> = []
+//    var longitudeArray: Array<Any> = []
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -65,28 +67,136 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         print("didTapAt")
     }
     
+    func linhas() {
+        
+        guard let fileName = Bundle.main.path(forResource: "linhaJSON", ofType: "json") else { return }
+        guard let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName)) else { return }
+        
+//        guard let data = optionalData,
+//                let json = try? JSONSerialization.jsonObject(with: data),
+//            let dictionary = json as? [String: Any]
+//            else { return }
+//        print(dictionary.count)
+        
+        do{
+            let swiftyJSONData = try JSON(data: optionalData)
+            let arrayTotal = swiftyJSONData["coordinates"].arrayValue
+            let latitudeArray = swiftyJSONData["coordinates"].arrayValue.map({
+                $0[0].doubleValue
+            })
+            let longitudeArray = swiftyJSONData["coordinates"].arrayValue.map({
+                $0[1].doubleValue
+            })
+            print(arrayTotal)
+//            print(latitudeArray)
+//            print(longitudeArray)
+            
+            let path = GMSMutablePath()
+            var i = 0
+            for _ in arrayTotal {
+                path.add(CLLocationCoordinate2DMake(longitudeArray[i], latitudeArray[i]))
+                i += 1
+            }
+            
+            let polyline = GMSPolyline(path: path)
+            polyline.strokeColor = UIColor.blue
+            polyline.strokeWidth = 4
+            polyline.map = mapGMS
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        
+//        let swiftyJSON = JSON(dictionary)
+//        guard let arrayLocal = swiftyJSON["coordinates"].arrayObject else { return }
+//        print(arrayLocal)
+////
+////        print(arrayLocal.count)
+////
+//        for array in arrayLocal {
+//
+////            latitudeArray = array[0]
+////            longitudeArray = array[1]
+//
+//        }
+//        print(latitudeArray)
+//        print(longitudeArray)
+        
+    }
+    
+    @IBAction func testeButton(_ sender: Any) {
+        
+        guard let fileName = Bundle.main.path(forResource: "deuMerda", ofType: "json") else { return }
+        guard let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName)) else { return }
+        
+        do {
+            let switfyJSON = try JSON(data: optionalData)
+            let arrayTotal = switfyJSON["coordinates"].arrayValue
+            let latitudeArray = switfyJSON["coordinates"].arrayValue.map({
+                $0[0].doubleValue
+            })
+            let longitudeArray = switfyJSON["coordinates"].arrayValue.map({
+                $0[1].doubleValue
+            })
+            
+            print(latitudeArray)
+            print(longitudeArray)
+            
+            let path = GMSMutablePath()
+            var i = 0
+            for _ in arrayTotal {
+                path.add(CLLocationCoordinate2DMake(longitudeArray[i], latitudeArray[i]))
+                i += 1
+            }
+            
+            let polyline = GMSPolyline(path: path)
+//            polyline.strokeColor = UIColor.white
+//            polyline.spans = []
+            
+//            let solidRed = GMSStrokeStyle.solidColor(.red)
+//            let whiteBlack =
+            
+            let styles = [GMSStrokeStyle.solidColor(.white), GMSStrokeStyle.solidColor(.black)]
+            let lengths: [NSNumber] = [50, 50]
+            
+            polyline.spans = GMSStyleSpans(polyline.path!, styles, lengths, .rhumb)
+            
+            polyline.strokeWidth = 4
+            polyline.map = mapGMS
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
     @IBAction func buttonteste(_ sender: Any) {
         
         let path = GMSMutablePath()
-        path.add(CLLocationCoordinate2D(latitude: -23.473844, longitude: -46.566184))
-        path.add(CLLocationCoordinate2D(latitude: -23.473808, longitude: -46.566111))
-        path.add(CLLocationCoordinate2D(latitude: -23.473659, longitude: -46.565797))
-        path.add(CLLocationCoordinate2D(latitude: -23.473618, longitude: -46.565711))
-        path.add(CLLocationCoordinate2D(latitude: -23.473260, longitude: -46.564957))
-        path.add(CLLocationCoordinate2D(latitude: -23.473555, longitude: -46.564932))
-        path.add(CLLocationCoordinate2D(latitude: -23.473538, longitude: -46.564754))
-        path.add(CLLocationCoordinate2D(latitude: -23.473548, longitude: -46.564455))
-        path.add(CLLocationCoordinate2D(latitude: -23.473554, longitude: -46.564255))
-        path.add(CLLocationCoordinate2D(latitude: -23.473573, longitude: -46.564153))
-        path.add(CLLocationCoordinate2D(latitude: -23.473641, longitude: -46.563782))
-        path.add(CLLocationCoordinate2D(latitude: -23.473716, longitude: -46.563505))
-        path.add(CLLocationCoordinate2D(latitude: -23.473781, longitude: -46.563287))
-        path.add(CLLocationCoordinate2D(latitude: -23.473845, longitude: -46.563125))
-        path.add(CLLocationCoordinate2D(latitude: -23.473915, longitude: -46.562947))
-        path.add(CLLocationCoordinate2D(latitude: -23.473971, longitude: -46.562858))
-        path.add(CLLocationCoordinate2D(latitude: -23.474059, longitude: -46.562711))
-        path.add(CLLocationCoordinate2D(latitude: -23.474152, longitude: -46.562550))
-        path.add(CLLocationCoordinate2D(latitude: -23.474283, longitude: -46.562342))
+        
+        
+        linhas()
+        
+//        path.add(CLLocationCoordinate2D(latitude: -23.473844, longitude: -46.566184))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473808, longitude: -46.566111))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473659, longitude: -46.565797))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473618, longitude: -46.565711))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473260, longitude: -46.564957))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473555, longitude: -46.564932))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473538, longitude: -46.564754))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473548, longitude: -46.564455))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473554, longitude: -46.564255))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473573, longitude: -46.564153))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473641, longitude: -46.563782))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473716, longitude: -46.563505))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473781, longitude: -46.563287))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473845, longitude: -46.563125))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473915, longitude: -46.562947))
+//        path.add(CLLocationCoordinate2D(latitude: -23.473971, longitude: -46.562858))
+//        path.add(CLLocationCoordinate2D(latitude: -23.474059, longitude: -46.562711))
+//        path.add(CLLocationCoordinate2D(latitude: -23.474152, longitude: -46.562550))
+//        path.add(CLLocationCoordinate2D(latitude: -23.474283, longitude: -46.562342))
 //        path.addLatitude(-23.473844, longitude: -46.566184)
 //        path.addLatitude(-23.473808, longitude: -46.566111)
 //        path.addLatitude(-23.473659, longitude: -46.565797)

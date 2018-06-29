@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,6 +35,13 @@
                                     <action selector="buttonteste:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ziU-an-p6P"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Arv-JQ-b6a">
+                                <rect key="frame" x="16" y="103" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="testeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ti-HL-VKK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -42,9 +50,12 @@
                             <constraint firstItem="fah-al-nPP" firstAttribute="top" secondItem="NpE-ar-vbf" secondAttribute="bottom" constant="18" id="ADR-5M-SZF"/>
                             <constraint firstItem="fah-al-nPP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Clj-5X-rz6"/>
                             <constraint firstItem="NpE-ar-vbf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="234" id="FkY-ZT-fbi"/>
+                            <constraint firstItem="Arv-JQ-b6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="HFN-kZ-dPD"/>
+                            <constraint firstItem="Arv-JQ-b6a" firstAttribute="top" secondItem="S3d-Qf-sWk" secondAttribute="bottom" constant="22" id="Igg-Zk-YN7"/>
                             <constraint firstItem="fah-al-nPP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="151" id="Kw2-2c-iqZ"/>
                             <constraint firstItem="S3d-Qf-sWk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QHo-4C-cb4"/>
                             <constraint firstItem="S3d-Qf-sWk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Qcw-ti-gt8"/>
+                            <constraint firstItem="fah-al-nPP" firstAttribute="top" secondItem="Arv-JQ-b6a" secondAttribute="bottom" constant="18" id="Ru2-Da-Xxd"/>
                             <constraint firstItem="NpE-ar-vbf" firstAttribute="top" secondItem="S3d-Qf-sWk" secondAttribute="bottom" constant="22" id="Vrl-v9-Kop"/>
                             <constraint firstItem="fah-al-nPP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="etr-Ig-1QS"/>
                             <constraint firstItem="S3d-Qf-sWk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ruh-vP-DHN"/>
@@ -70,16 +81,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJo-B3-XRq" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iv-B4-1A0">
+                                <rect key="frame" x="16" y="512" width="75" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1iv-B4-1A0" secondAttribute="height" multiplier="25:12" id="tQo-Lv-2lF"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="blueButton:" destination="x6c-g3-OW1" eventType="touchUpInside" id="Qyg-uc-Dh2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgQ-Rd-0Ua">
+                                <rect key="frame" x="229" y="512" width="75" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dgQ-Rd-0Ua" secondAttribute="height" multiplier="25:12" id="9xY-gj-6M1"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="redButton:" destination="x6c-g3-OW1" eventType="touchUpInside" id="Elo-9g-aiQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1iv-B4-1A0" firstAttribute="leading" secondItem="wg9-Wk-ec2" secondAttribute="leading" constant="16" id="051-GQ-a1E"/>
                             <constraint firstItem="wJo-B3-XRq" firstAttribute="trailing" secondItem="wg9-Wk-ec2" secondAttribute="trailing" id="7hH-it-Yze"/>
-                            <constraint firstItem="wJo-B3-XRq" firstAttribute="bottom" secondItem="wg9-Wk-ec2" secondAttribute="bottom" id="WMl-ZV-td9"/>
+                            <constraint firstItem="dgQ-Rd-0Ua" firstAttribute="top" secondItem="wJo-B3-XRq" secondAttribute="bottom" constant="17" id="CxF-mC-HD2"/>
+                            <constraint firstItem="wg9-Wk-ec2" firstAttribute="trailing" secondItem="dgQ-Rd-0Ua" secondAttribute="trailing" constant="16" id="Jo8-3z-BDW"/>
+                            <constraint firstItem="wJo-B3-XRq" firstAttribute="bottom" secondItem="wg9-Wk-ec2" secondAttribute="bottom" constant="-73" id="WMl-ZV-td9"/>
                             <constraint firstItem="wJo-B3-XRq" firstAttribute="leading" secondItem="wg9-Wk-ec2" secondAttribute="leading" id="Z88-dK-762"/>
+                            <constraint firstItem="1iv-B4-1A0" firstAttribute="top" secondItem="wJo-B3-XRq" secondAttribute="bottom" constant="17" id="bd5-iO-7xM"/>
+                            <constraint firstItem="wg9-Wk-ec2" firstAttribute="bottom" secondItem="dgQ-Rd-0Ua" secondAttribute="bottom" constant="20" id="wnK-bW-Giq"/>
                             <constraint firstItem="wJo-B3-XRq" firstAttribute="top" secondItem="wg9-Wk-ec2" secondAttribute="top" id="xTh-W9-iIj"/>
+                            <constraint firstItem="wg9-Wk-ec2" firstAttribute="bottom" secondItem="1iv-B4-1A0" secondAttribute="bottom" constant="20" id="yLg-FA-37z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wg9-Wk-ec2"/>
                     </view>
