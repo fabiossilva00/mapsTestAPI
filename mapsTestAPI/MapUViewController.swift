@@ -12,10 +12,14 @@ import GooglePlaces
 
 class MapUViewController: UIViewController, GMSMapViewDelegate {
     
+    var markerID = String()
     let markerT = GMSMarker()
     var markerSe = GMSMarker()
+    var markerArr = GMSMarker()
     var coordenateMuda = CLLocation()
     var coordena = CLLocationCoordinate2D()
+    
+    var markerDict: [String: GMSMarker] = [:]
     
     @IBOutlet weak var googleMap: GMSMapView!
     
@@ -50,11 +54,18 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
         
     }
     
-//    private var infoWindow = mapView(<#T##mapView: GMSMapView##GMSMapView#>, markerInfoWindow: <#T##GMSMarker#>)
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        markerID = marker.title!
+        
+        return false
+        
+    }
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        <#code#>
+//    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+//
 //    }
+    
+//    private var infoWindow = mapView(<#T##mapView: GMSMapView##GMSMapView#>, markerInfoWindow: <#T##GMSMarker#>)
     
     func mapGoogleConfig() {
         
@@ -86,25 +97,41 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     
     func makeMarker(coordenadas: CLLocationCoordinate2D){
         
-        let marker = GMSMarker(position: coordenadas)
-        
-        let house = UIImage(named: "ghostBlue")!.withRenderingMode(.alwaysTemplate)
-        let markerView = UIImageView(image: house)
-        markerView.tintColor = .white
-        londonView = markerView
-        
-        marker.title = "Bu!"
-        marker.snippet = "Fantasmaaa!"
-        
-//        marker.infoWindowAnchor = CGPoint(x: 2.5, y: 0.5)
-        
-//        marker.accessibilityLabel =
-        
-        marker.iconView = markerView
-        marker.tracksViewChanges = true
-        
-        marker.map = googleMap
-        lodon = marker
+        var coordExiste = false
+        for markerDicio in markerDict {
+//            if markerDicio.value.position == coordenadas{
+//                coordExiste = true
+//            }
+            let position = markerDicio.value.position
+            if position.latitude == coordenadas.latitude && position.longitude == coordenadas.longitude{
+                coordExiste = true
+            }
+            
+        }
+        if !coordExiste{
+            let marker = GMSMarker(position: coordenadas)
+            
+            let house = UIImage(named: "ghostBlue")!.withRenderingMode(.alwaysTemplate)
+            let markerView = UIImageView(image: house)
+            markerView.tintColor = .white
+            londonView = markerView
+            
+            marker.title = "Bu!"
+            marker.snippet = "Fantasmaaa!"
+            
+            //        marker.infoWindowAnchor = CGPoint(x: 2.5, y: 0.5)
+            
+            //        marker.accessibilityLabel =
+            
+            marker.iconView = markerView
+            marker.tracksViewChanges = true
+            
+            marker.map = googleMap
+            lodon = marker
+        }else{
+            print("existe")
+        }
+
         
     }
     
@@ -124,7 +151,12 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     
     @IBAction func blueButton(_ sender: Any) {
 //        makeOverlay(coordenadas: coordena)
-        googleMap.clear()
+        print("Foi ?")
+        print(markerID)
+        let removeMarker = markerDict[markerID]
+        print(markerDict)
+        removeMarker?.map = nil
+        
     }
     
     @IBAction func whiteButton(_ sender: Any) {
@@ -142,29 +174,52 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @IBAction func blackButton(_ sender: Any) {
-        
         ComunicacoesAlamoFire().markerGet { (id, descricao, imagem, latitude, longitude) in
             
-            for indx in 0...(id.count - 1) {
-                print(indx)
-
-                self.markerArray(id: id[indx], descricao: descricao[indx], imagem: imagem[indx], latitude: latitude[indx], longitude: longitude[indx])
-            }
+            self.googleMap.clear()
+            self.markerDict = [:]
+            self.markerArray(id: id, descricao: descricao, imagem: imagem, latitude: latitude, longitude: longitude)
+            
+//            for indx in 0...(id.count - 1) {
+//                print(indx)
+//
+////                self.markerArray(id: id[indx], descricao: descricao[indx], imagem: imagem[indx], latitude: latitude[indx], longitude: longitude[indx])
+//            }
             
         }
-        
     }
     
-    func markerArray(id: String, descricao: String, imagem: String, latitude: Double, longitude: Double) {
+//    func markerArray(id: String, descricao: String, imagem: String, latitude: Double, longitude: Double) {
+//
+//        let coordenadas = CLLocationCoordinate2DMake(latitude, longitude)
+//
+//        markerArr = GMSMarker(position: coordenadas)
+//        markerArr.icon = UIImage(named: imagem)
+//        markerArr.title = id
+//        markerArr.snippet = descricao
+//
+//        markerArr.map = googleMap
+//        markerDict[id] = markerArr
+//
+//    }
+    
+    func markerArray(id: Array<String>, descricao: Array<String>, imagem: Array<String>, latitude: Array<Double>, longitude: Array<Double>) {
         
-        let coordenadas = CLLocationCoordinate2DMake(latitude, longitude)
-        let marker = GMSMarker(position: coordenadas)
+        if markerDict.isEmpty{
+            for index in 0...(id.count - 1){
+                let coordenadas = CLLocationCoordinate2DMake(latitude[index], longitude[index])
+                markerArr = GMSMarker(position: coordenadas)
+                markerArr.icon = UIImage(named: imagem[index])
+                markerArr.title = id[index]
+                markerArr.snippet = descricao[index]
+                
+                markerArr.map = googleMap
+                markerDict[id[index]] = markerArr
+                
+            }
+        }
         
-        marker.icon = UIImage(named: imagem)
-        marker.title = id
-        marker.snippet = descricao
-        
-        marker.map = googleMap
+
         
     }
     
@@ -194,3 +249,4 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     */
 
 }
+
