@@ -18,6 +18,7 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     var markerArr = GMSMarker()
     var coordenateMuda = CLLocation()
     var coordena = CLLocationCoordinate2D()
+    let customMarker = CustomMarkerXib()
     
     var markerDict: [String: GMSMarker] = [:]
     
@@ -38,6 +39,24 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
         }) { (finished) in
             self.lodon?.tracksViewChanges = false
         }
+        
+    }
+    
+    var xibInfo = UIView()
+    
+    func loadNib() -> UIView {
+//        xibInfo = Bundle.main.loadNibNamed("CustomMarkerXib", owner: nil, options: nil)?.first as! UIView
+        xibInfo = UINib(nibName: "CustomMarkerXib", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+        
+        return xibInfo
+    }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+
+        
+        let loadXib = loadNib()
+        
+        return loadXib
         
     }
     

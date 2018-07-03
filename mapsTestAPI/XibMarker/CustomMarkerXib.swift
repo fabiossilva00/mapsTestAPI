@@ -8,11 +8,9 @@
 
 import UIKit
 
-protocol  MapMarkerDelegate: class {
-    func didTapInfoButton(data: NSDictionary)
-}
-
 class CustomMarkerXib: UIView {
+    
+    
     
     @IBOutlet weak var ghostBlueImage: UIImageView!
     @IBOutlet weak var redButton: UIButton!
@@ -20,17 +18,23 @@ class CustomMarkerXib: UIView {
     @IBOutlet weak var valor1Text: UILabel!
     @IBOutlet weak var valor2Text: UILabel!
     
-    weak var delegate: MapMarkerDelegate?
-    var spotData: NSDictionary?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+//        commomInit()
+        
+    }
     
-    @IBAction func redButton(_ sender: Any) {
-            delegate?.didTapInfoButton(data: spotData!)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        commomInit()
+    }
+    
+    private func commomInit() {
+        Bundle.main.loadNibNamed("CustomMarkerXib", owner: self, options: nil)
 
     }
     
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "CustomMarkerXib", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
-    }
     
 
     /*
