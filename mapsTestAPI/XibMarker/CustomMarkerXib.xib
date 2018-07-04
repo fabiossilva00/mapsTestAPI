@@ -84,13 +84,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="8mV-sG-75k"/>
-            <connections>
-                <outlet property="blueButton" destination="W9v-Cl-LE8" id="u4i-QN-znZ"/>
-                <outlet property="ghostBlueImage" destination="nxD-zj-E1K" id="5Zu-Bs-0K9"/>
-                <outlet property="redButton" destination="8w2-Tc-YX3" id="YvR-Rl-9bS"/>
-                <outlet property="valor1Text" destination="Lex-f9-Kr5" id="YCH-5o-Py7"/>
-                <outlet property="valor2Text" destination="bCh-5S-4qI" id="QW1-l8-a3k"/>
-            </connections>
             <point key="canvasLocation" x="367.5" y="-717.5"/>
         </view>
     </objects>

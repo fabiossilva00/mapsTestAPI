@@ -56,7 +56,18 @@ class ComunicacoesAlamoFire: NSObject {
                 
                 do {
                     let swiftyJSON = try JSON(data: response.data!)
-//                    print(swiftyJSON.count)
+                    print(swiftyJSON.arrayValue)
+                    
+                    
+                    guard let fileURL = Bundle.main.path(forResource: "markersJSON", ofType: "json") else { return }
+                    
+                    do {
+//                        let data = try JSONSerialization.data(withJSONObject: swiftyJSON.arrayValue, options: [])
+                        try response.data?.write(to: URL(fileURLWithPath: fileURL))
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                    
                     for sJSON in swiftyJSON {
                         
                         idArray.append(sJSON.1["_id"].stringValue)

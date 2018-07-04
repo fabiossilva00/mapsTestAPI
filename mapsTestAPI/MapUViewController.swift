@@ -166,16 +166,20 @@ class MapUViewController: UIViewController, GMSMapViewDelegate {
     
     @IBAction func redButton(_ sender: Any) {
         makeMarker(coordenadas: coordena)
+        
+        
     }
     
     @IBAction func blueButton(_ sender: Any) {
 //        makeOverlay(coordenadas: coordena)
-        print("Foi ?")
-        print(markerID)
-        let removeMarker = markerDict[markerID]
-        print(markerDict)
-        removeMarker?.map = nil
-        
+//        func deleteMarker(){
+//            print("Foi ?")
+//            print(markerID)
+//            let removeMarker = markerDict[markerID]
+//            print(markerDict)
+//            removeMarker?.map = nil
+//        }
+
     }
     
     @IBAction func whiteButton(_ sender: Any) {
